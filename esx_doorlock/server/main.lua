@@ -58,8 +58,8 @@ AddEventHandler('esx_doorlock:SaveOnConfig', function(yaw, coords, model, job, e
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	if xPlayer.getGroup() ~= "user" then
-		xPlayer.showNotification("~g~Door founded~w~!")
-		
+		TriggerClientEvent('esx:showNotification', xPlayer.source, '~g~Door founded~w~!')
+
 		local path = GetResourcePath(GetCurrentResourceName())
 		local lines_config = lines_from(path.."/config.lua")
 
@@ -93,7 +93,7 @@ AddEventHandler('esx_doorlock:SaveOnConfig', function(yaw, coords, model, job, e
 		file:write("\n}") -- Close the last }
 		file:close()
 	else
-		xPlayer.showNotification("You dont have permission to do that")
+		TriggerClientEvent('esx:showNotification', xPlayer.source, 'You dont have permission to do that')
 	end
 end)
 
